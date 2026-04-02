@@ -6,8 +6,10 @@
   # nft (Node File Trace) handles dynamic requires and binary assets in
   # pdf-parse/pdfkit/mammoth far better than the default esbuild bundler.
   node_bundler = "nft"
-  # Raise the function execution ceiling to 26s (Netlify platform maximum).
-  # Without this the default is 10s — the Anthropic streaming call takes ~19s.
+
+# Raise the function execution ceiling to 26s (Netlify platform maximum).
+# Without this the default is 10s — the Anthropic streaming call takes ~19s.
+[functions."api"]
   timeout = 26
 
 # Proxy /api/* calls to the serverless function.
