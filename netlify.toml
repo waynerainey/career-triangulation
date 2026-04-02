@@ -1,0 +1,17 @@
+[build]
+  publish = "public"
+  functions = "netlify/functions"
+
+[functions]
+  # nft (Node File Trace) handles dynamic requires and binary assets in
+  # pdf-parse/pdfkit/mammoth far better than the default esbuild bundler.
+  node_bundler = "nft"
+
+# Proxy /api/* calls to the serverless function.
+# force = true ensures this rule fires even if Netlify's static-asset
+# pipeline tries to intercept the path first.
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/api"
+  status = 200
+  force = true
