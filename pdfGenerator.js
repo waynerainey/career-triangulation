@@ -74,10 +74,10 @@ function generatePDF(findings, session) {
     // ── FRAMING ───────────────────────────────────────────────────────────
     // Gold left-border callout
     const framingText = findings.framing || '';
-    const framingHeight = Math.max(40, doc.heightOfString(framingText, { width: W - 16 }) + 20);
+    const framingHeight = Math.max(40, doc.heightOfString(framingText, { width: W - 14 }) + 20);
     doc.rect(L, doc.y, 3, framingHeight).fill(COLORS.gold);
     doc.font('Helvetica-Oblique').fontSize(10).fillColor(COLORS.ink)
-      .text(framingText, L + 14, doc.y + 10, { width: W - 16 });
+      .text(framingText, L + 14, doc.y + 10, { width: W - 14 });
     doc.y += framingHeight + 16;
 
     // ── PATTERN SUMMARY ───────────────────────────────────────────────────
@@ -116,10 +116,11 @@ function generatePDF(findings, session) {
       questions.forEach((q, i) => {
         if (doc.y > doc.page.height - 60) doc.addPage();
         const numLabel = `${i + 1}.`;
+        const qY = doc.y;
         doc.font('Helvetica-Bold').fontSize(8).fillColor(accentColor)
-          .text(numLabel, L, doc.y, { continued: true, width: 18 });
+          .text(numLabel, L, qY, { lineBreak: false });
         doc.font('Helvetica').fontSize(10).fillColor(COLORS.ink)
-          .text(q, { width: W - 18 });
+          .text(q, L + 22, qY, { width: W - 22 });
         doc.moveDown(0.5);
       });
 
@@ -133,12 +134,12 @@ function generatePDF(findings, session) {
     // ── ECONOMIC REALITY ──────────────────────────────────────────────────
     if (doc.y > doc.page.height - 80) doc.addPage();
     const econText = findings.economicNote || '';
-    const econHeight = Math.max(40, doc.heightOfString(econText, { width: W - 16 }) + 20);
+    const econHeight = Math.max(40, doc.heightOfString(econText, { width: W - 14 }) + 20);
     doc.rect(L, doc.y, W, 1).fill(COLORS.border);
     doc.moveDown(0.5);
     doc.rect(L, doc.y, 3, econHeight).fill(COLORS.gray);
     doc.font('Helvetica-Oblique').fontSize(9.5).fillColor(COLORS.gray)
-      .text(econText, L + 14, doc.y + 10, { width: W - 16 });
+      .text(econText, L + 14, doc.y + 10, { width: W - 14 });
     doc.y += econHeight + 16;
 
     // ── FOOTER ────────────────────────────────────────────────────────────

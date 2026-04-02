@@ -52,6 +52,28 @@ async function extractText(buffer, mimetype, originalname) {
     console.log('[fileParser] text done:', originalname, extractedText.length, 'chars');
   }
 
+  // Prompt injection scan — detect adversarial instructions embedded in the
+  // uploaded document before it reaches the LLM.
+  const INJECTION_PATTERNS = [
+    'ignore previous instructions',
+    'ignore all instructions',
+    'you are now',
+    'disregard',
+    'new task',
+    'system prompt',
+    'forget your instructions',
+    'new instructions',
+  ];
+  const lowerText = extractedText.toLowerCase();
+  const injectionHit = INJECTION_PATTERNS.find(p => lowerText.includes(p));
+  if (injectionHit) {
+    console.warn('[fileParser] injection pattern detected:', injectionHit);
+    throw Object.assign(
+      new Error('This document could not be processed. Please upload a standard LinkedIn PDF export.'),
+      { code: 'INJECTION_DETECTED' }
+    );
+  }
+
   if (!looksLikeLinkedIn(extractedText)) {
     throw Object.assign(
       new Error('Document does not appear to be a LinkedIn profile export. Please upload your LinkedIn PDF and try again.'),

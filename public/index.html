@@ -87,26 +87,6 @@
       font-style: italic;
       color: var(--rust);
     }
-    .upload-description {
-      font-size: 15px;
-      color: var(--muted);
-      text-align: center;
-      margin-bottom: 20px;
-      max-width: 540px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    .callout-note {
-      background: var(--card);
-      border-left: 3px solid var(--gold);
-      border-radius: 0 var(--radius) var(--radius) 0;
-      padding: 14px 18px;
-      font-size: 14px;
-      color: var(--ink);
-      margin-bottom: 28px;
-      line-height: 1.55;
-    }
-
     /* Drop zone */
     .drop-zone {
       border: 2px dashed var(--border);
@@ -414,13 +394,114 @@
 
     /* ── SECTION DIVIDER ── */
     .section-gap { height: 12px; }
+
+    /* ── BRAND LINK ── */
+    .brand-link { color: inherit; text-decoration: none; }
+    .brand-link:hover { color: var(--rust); }
+
+    /* ── UPLOAD SUBHEAD ── */
+    .upload-subhead {
+      font-family: 'DM Mono', monospace;
+      font-size: 12px;
+      letter-spacing: 0.10em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-align: center;
+      margin-bottom: 24px;
+    }
+
+    /* ── UPLOAD BODY ── */
+    .upload-body {
+      font-size: 15px;
+      color: var(--ink);
+      line-height: 1.7;
+      margin-bottom: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    /* ── LAYER PREVIEW ── */
+    .layer-preview {
+      background: var(--card);
+      border-radius: var(--radius);
+      border: 1.5px solid var(--border);
+      padding: 18px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .layer-preview-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .layer-preview-icon {
+      font-size: 20px;
+      flex-shrink: 0;
+      line-height: 1.2;
+    }
+
+    /* ── SECURITY NOTICE ── */
+    .security-notice {
+      font-size: 12px;
+      color: var(--muted);
+      text-align: center;
+      margin-top: 10px;
+      line-height: 1.5;
+    }
+
+    /* ── RESULTS TIMESTAMP ── */
+    .results-timestamp {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      color: var(--muted);
+      margin-bottom: 14px;
+      letter-spacing: 0.04em;
+    }
+
+    /* ── LAYER DESCRIPTION ── */
+    .layer-description {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 10px;
+      line-height: 1.5;
+    }
+
+    /* ── SESSION SECURITY ── */
+    .session-security {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 14px 18px;
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.55;
+      margin-bottom: 20px;
+      border: 1.5px solid var(--border);
+    }
+
+    /* ── FOOTER ── */
+    .site-footer {
+      text-align: center;
+      padding: 28px 20px;
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 0.06em;
+      border-top: 1px solid var(--border);
+    }
+    .site-footer a { color: var(--muted); text-decoration: none; }
+    .site-footer a:hover { color: var(--rust); }
   </style>
 </head>
 <body>
 
 <!-- HEADER -->
 <header class="site-header no-print">
-  <div class="brand">The Career Cantina</div>
+  <div class="brand"><a href="https://www.thecareercantina.com" target="_blank" rel="noopener noreferrer" class="brand-link">The Career Cantina</a></div>
   <div class="tool-name">Career Triangulation</div>
 </header>
 
@@ -428,12 +509,28 @@
 
   <!-- ── STATE 1: UPLOAD ── -->
   <div id="state-upload" class="state active">
-    <h1 class="upload-headline">Where are you, <em>really</em>?</h1>
-    <p class="upload-description">
-      Upload your LinkedIn PDF and get three layers of self-directed questions — built from your actual history, not a template. These are not answers. They are starting points for a conversation you need to have with yourself.
-    </p>
-    <div class="callout-note">
-      The questions this tool generates are not interview prep. They are starting points for a conversation you need to have with yourself — before you write a single application.
+    <h1 class="upload-headline">Where are you, <em>really?</em></h1>
+    <p class="upload-subhead">A career self-evaluation tool from The Career Cantina</p>
+
+    <div class="upload-body">
+      <p>Career Triangulation is not interview prep. It is a self-evaluation — a set of questions generated from your LinkedIn profile that are designed to help you think clearly about where you are and where you're headed before you start applying anywhere.</p>
+      <p>The questions you receive are specific to your profile as it exists today. They reflect this moment in your career. Answer them honestly from where you actually are — not where you think you should be. Come back in six months and the questions may be different, because you will be different.</p>
+      <p>Upload your LinkedIn PDF below. No account needed. No data retained. Your document is read, analyzed, and discarded in a single session — we don't store it, log it, or keep it in any form.</p>
+    </div>
+
+    <div class="layer-preview">
+      <div class="layer-preview-item">
+        <span class="layer-preview-icon">&#128301;</span>
+        <div><strong>Telescope</strong> &mdash; Questions to orient your search before you open a single job posting</div>
+      </div>
+      <div class="layer-preview-item">
+        <span class="layer-preview-icon">&#128300;</span>
+        <div><strong>Microscope</strong> &mdash; Questions to interrogate a specific opportunity before you commit to it</div>
+      </div>
+      <div class="layer-preview-item">
+        <span class="layer-preview-icon">&#129522;</span>
+        <div><strong>Mirror</strong> &mdash; Questions to surface what you need to communicate &mdash; and ask &mdash; that interviews won&rsquo;t</div>
+      </div>
     </div>
 
     <div class="drop-zone" id="drop-zone">
@@ -444,6 +541,7 @@
       <div class="drop-filename" id="drop-filename" style="display:none"></div>
     </div>
 
+    <p class="security-notice">Your document is never stored. It's read, analyzed, and discarded in a single session.</p>
     <button class="btn-primary" id="btn-run" disabled>Run Triangulation</button>
   </div>
 
@@ -457,6 +555,10 @@
 
   <!-- ── STATE 3: RESULTS ── -->
   <div id="state-results" class="state">
+
+    <div id="section-timestamp" class="results-section">
+      <div class="results-timestamp" id="results-timestamp"></div>
+    </div>
 
     <div id="section-framing" class="results-section">
       <div class="framing-box" id="framing-text"></div>
@@ -476,6 +578,7 @@
           <span class="layer-tag">Telescope</span>
         </div>
         <div class="layer-title">Strategic Search Orientation</div>
+        <div class="layer-description">These questions are about where to point your search — and why — before you open a single posting.</div>
         <div class="layer-why" id="telescope-why"></div>
         <ul class="questions-list" id="telescope-questions"></ul>
       </div>
@@ -488,6 +591,7 @@
           <span class="layer-tag">Microscope</span>
         </div>
         <div class="layer-title">Interrogating the Opportunity</div>
+        <div class="layer-description">These questions are about interrogating a specific opportunity before you commit energy to pursuing it.</div>
         <div class="layer-why" id="microscope-why"></div>
         <ul class="questions-list" id="microscope-questions"></ul>
       </div>
@@ -500,6 +604,7 @@
           <span class="layer-tag">Mirror</span>
         </div>
         <div class="layer-title">The Bilateral Evaluation</div>
+        <div class="layer-description">These questions are about what you need to surface and ask in an interview that the process won't surface on its own.</div>
         <div class="layer-why" id="mirror-why"></div>
         <ul class="questions-list" id="mirror-questions"></ul>
       </div>
@@ -507,6 +612,10 @@
 
     <div id="section-econ" class="results-section">
       <div class="econ-note" id="econ-text"></div>
+    </div>
+
+    <div id="section-session-security" class="results-section no-print">
+      <div class="session-security">This session is complete. Your LinkedIn PDF was not stored, logged, or retained in any form. The analysis above exists only in this browser window.</div>
     </div>
 
     <div id="section-actions" class="results-section no-print">
@@ -532,6 +641,11 @@
   </div>
 
 </main>
+
+<footer class="site-footer no-print">
+  The Career Cantina &nbsp;&middot;&nbsp; Wayne Rainey &nbsp;&middot;&nbsp; Career Triangulation Protocol &nbsp;&middot;&nbsp;
+  <a href="https://www.thecareercantina.com" target="_blank" rel="noopener noreferrer">thecareercantina.com</a>
+</footer>
 
 <script>
   // ── STATE MACHINE ──────────────────────────────────────────────────────
@@ -695,15 +809,25 @@
     // Economic note
     document.getElementById('econ-text').textContent = findings.economicNote || '';
 
+    // Timestamp
+    const tsEl = document.getElementById('results-timestamp');
+    if (tsEl) {
+      const date = findings._session?.date ? new Date(findings._session.date) : new Date();
+      const formatted = date.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+      tsEl.textContent = `Generated from your LinkedIn profile \u00b7 ${formatted}`;
+    }
+
     // Staged reveal
     showState('results');
     const sections = [
+      'section-timestamp',
       'section-framing',
       'section-pattern',
       'section-telescope',
       'section-microscope',
       'section-mirror',
       'section-econ',
+      'section-session-security',
       'section-actions',
     ];
     sections.forEach((id, i) => {

@@ -258,6 +258,10 @@ app.post(
         cause:   err.cause?.message,
         stack:   err.stack,
       });
+      // Injection pattern detected in uploaded document.
+      if (err.code === 'INJECTION_DETECTED') {
+        return res.status(400).json({ error: 'invalid_document', message: err.message });
+      }
       // Non-LinkedIn document rejected by fileParser structural check.
       if (err.code === 'NOT_LINKEDIN') {
         return res.status(400).json({ error: 'invalid_document', message: err.message });
