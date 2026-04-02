@@ -233,6 +233,7 @@ app.post(
       const requiredKeys = ['framing', 'patternSummary', 'telescope', 'microscope', 'mirror', 'economicNote'];
       const missingKeys = requiredKeys.filter(k => !(k in findings));
       if (missingKeys.length > 0) {
+        console.error('[analyze] schema validation failed — missingKeys:', missingKeys, '— rawText (first 600):', rawText.slice(0, 600));
         if (findings.error === 'invalid_document') {
           return res.status(400).json({ error: 'invalid_document', message: findings.message });
         }

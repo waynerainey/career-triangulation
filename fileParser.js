@@ -57,12 +57,14 @@ async function extractText(buffer, mimetype, originalname) {
   const INJECTION_PATTERNS = [
     'ignore previous instructions',
     'ignore all instructions',
-    'you are now',
-    'disregard',
-    'new task',
-    'system prompt',
+    'you are now a',
+    'disregard all previous',
+    'disregard your instructions',
     'forget your instructions',
-    'new instructions',
+    'forget all previous instructions',
+    'system prompt:',
+    'new instructions:',
+    'override your instructions',
   ];
   const lowerText = extractedText.toLowerCase();
   const injectionHit = INJECTION_PATTERNS.find(p => lowerText.includes(p));
