@@ -1,4 +1,5 @@
 'use strict';
+// v2 — rebuilt to apply 26s timeout from netlify.toml
 
 const serverless = require('serverless-http');
 const app = require('../../server');
