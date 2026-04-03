@@ -265,8 +265,12 @@
       margin-bottom: 10px;
     }
     .layer-icon {
-      font-size: 22px;
-      line-height: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 22px;
+      height: 22px;
+      flex-shrink: 0;
     }
     .layer-tag {
       font-family: 'DM Mono', monospace;
@@ -440,9 +444,13 @@
       line-height: 1.5;
     }
     .layer-preview-icon {
-      font-size: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 20px;
+      height: 20px;
       flex-shrink: 0;
-      line-height: 1.2;
+      margin-top: 1px;
     }
 
     /* ── SECURITY NOTICE ── */
@@ -495,6 +503,37 @@
     }
     .site-footer a { color: var(--muted); text-decoration: none; }
     .site-footer a:hover { color: var(--rust); }
+
+    /* ── LAYER SVG ICONS ── */
+    .layer-icon-svg {
+      width: 22px;
+      height: 22px;
+      flex-shrink: 0;
+      display: block;
+    }
+    .layer-preview-icon svg {
+      width: 20px;
+      height: 20px;
+      display: block;
+      flex-shrink: 0;
+    }
+
+    /* ── MOBILE SHORT COPY ── */
+    .upload-body-short {
+      display: none;
+      font-size: 15px;
+      color: var(--ink);
+      line-height: 1.7;
+      margin-bottom: 24px;
+    }
+
+    @media (max-width: 479px) {
+      .site-header { padding: 16px 20px 12px; }
+      .upload-subhead { margin-bottom: 16px; }
+      .upload-body { display: none; }
+      .upload-body-short { display: flex; flex-direction: column; gap: 10px; }
+      .layer-preview { margin-bottom: 20px; }
+    }
   </style>
 </head>
 <body>
@@ -518,17 +557,33 @@
       <p>Upload your LinkedIn PDF below. No account needed. No data retained. Your document is read, analyzed, and discarded in a single session — we don't store it, log it, or keep it in any form.</p>
     </div>
 
+    <div class="upload-body-short">
+      <p>Career Triangulation generates self-directed thinking questions from your LinkedIn profile — specific to where you are right now, not interview prep. Upload your PDF below. Your document is never stored.</p>
+    </div>
+
     <div class="layer-preview">
       <div class="layer-preview-item">
-        <span class="layer-preview-icon">&#128301;</span>
+        <span class="layer-preview-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="var(--rust)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M4 16.5L20 8.5"/><path d="M4 16.5v3.5"/><path d="M2 15l2 1.5"/><path d="M18 8h3.5v3.5"/><path d="M11 13.5L9 20M11 13.5L13 20"/>
+          </svg>
+        </span>
         <div><strong>Telescope</strong> &mdash; Questions to orient your search before you open a single job posting</div>
       </div>
       <div class="layer-preview-item">
-        <span class="layer-preview-icon">&#128300;</span>
+        <span class="layer-preview-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="var(--sage)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="10.5" cy="10.5" r="7"/><path d="M21 21l-4.5-4.5"/>
+          </svg>
+        </span>
         <div><strong>Microscope</strong> &mdash; Questions to interrogate a specific opportunity before you commit to it</div>
       </div>
       <div class="layer-preview-item">
-        <span class="layer-preview-icon">&#129522;</span>
+        <span class="layer-preview-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="4" y="2" width="16" height="18" rx="2"/><line x1="12" y1="2" x2="12" y2="20"/><path d="M9 22h6"/><path d="M12 20v2"/>
+          </svg>
+        </span>
         <div><strong>Mirror</strong> &mdash; Questions to surface what you need to communicate &mdash; and ask &mdash; that interviews won&rsquo;t</div>
       </div>
     </div>
@@ -574,7 +629,11 @@
     <div id="section-telescope" class="results-section">
       <div class="layer-card layer-telescope">
         <div class="layer-header">
-          <span class="layer-icon">&#128301;</span>
+          <span class="layer-icon">
+            <svg class="layer-icon-svg" viewBox="0 0 24 24" fill="none" stroke="var(--rust)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M4 16.5L20 8.5"/><path d="M4 16.5v3.5"/><path d="M2 15l2 1.5"/><path d="M18 8h3.5v3.5"/><path d="M11 13.5L9 20M11 13.5L13 20"/>
+            </svg>
+          </span>
           <span class="layer-tag">Telescope</span>
         </div>
         <div class="layer-title">Strategic Search Orientation</div>
@@ -587,7 +646,11 @@
     <div id="section-microscope" class="results-section">
       <div class="layer-card layer-microscope">
         <div class="layer-header">
-          <span class="layer-icon">&#128300;</span>
+          <span class="layer-icon">
+            <svg class="layer-icon-svg" viewBox="0 0 24 24" fill="none" stroke="var(--sage)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="10.5" cy="10.5" r="7"/><path d="M21 21l-4.5-4.5"/>
+            </svg>
+          </span>
           <span class="layer-tag">Microscope</span>
         </div>
         <div class="layer-title">Interrogating the Opportunity</div>
@@ -600,7 +663,11 @@
     <div id="section-mirror" class="results-section">
       <div class="layer-card layer-mirror">
         <div class="layer-header">
-          <span class="layer-icon">&#129522;</span>
+          <span class="layer-icon">
+            <svg class="layer-icon-svg" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="4" y="2" width="16" height="18" rx="2"/><line x1="12" y1="2" x2="12" y2="20"/><path d="M9 22h6"/><path d="M12 20v2"/>
+            </svg>
+          </span>
           <span class="layer-tag">Mirror</span>
         </div>
         <div class="layer-title">The Bilateral Evaluation</div>
@@ -623,8 +690,9 @@
         <button class="btn-secondary" id="btn-pdf">
           <span>&#8595;</span> Save as PDF
         </button>
-        <button class="btn-secondary" id="btn-print">
-          <span>&#128438;</span> Print
+        <button class="btn-secondary" id="btn-copy">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          Copy Report
         </button>
       </div>
     </div>
@@ -897,9 +965,67 @@
     }
   });
 
-  // ── PRINT ──────────────────────────────────────────────────────────────
-  document.getElementById('btn-print').addEventListener('click', () => {
-    window.print();
+  // ── COPY REPORT ────────────────────────────────────────────────────────
+  const COPY_ICON_HTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg> Copy Report';
+
+  document.getElementById('btn-copy').addEventListener('click', async () => {
+    if (!currentFindings) return;
+    const btn = document.getElementById('btn-copy');
+    const f = currentFindings;
+    const lines = [];
+
+    lines.push('CAREER TRIANGULATION REPORT');
+    lines.push('The Career Cantina \u00b7 thecareercantina.com');
+    if (f._session?.date) {
+      const d = new Date(f._session.date);
+      lines.push(d.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' }));
+    }
+    lines.push('');
+
+    if (f.framing) { lines.push(f.framing); lines.push(''); }
+
+    if (f.patternSummary) {
+      lines.push('PATTERN SUMMARY');
+      lines.push(f.patternSummary);
+      lines.push('');
+    }
+
+    const layerDefs = [
+      { key: 'telescope',  label: 'TELESCOPE \u2014 Strategic Search Orientation' },
+      { key: 'microscope', label: 'MICROSCOPE \u2014 Interrogating the Opportunity' },
+      { key: 'mirror',     label: 'MIRROR \u2014 The Bilateral Evaluation' },
+    ];
+    layerDefs.forEach(({ key, label }) => {
+      const layer = f[key];
+      if (!layer) return;
+      lines.push(label);
+      if (layer.why) lines.push(layer.why);
+      lines.push('');
+      (Array.isArray(layer.questions) ? layer.questions : []).forEach((q, i) => {
+        lines.push((i + 1) + '. ' + q);
+      });
+      lines.push('');
+    });
+
+    if (f.economicNote) lines.push(f.economicNote);
+
+    const text = lines.join('\n');
+
+    try {
+      await navigator.clipboard.writeText(text);
+    } catch (_) {
+      // Fallback for restricted/older browsers
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.cssText = 'position:fixed;opacity:0;pointer-events:none';
+      document.body.appendChild(ta);
+      ta.select();
+      try { document.execCommand('copy'); } catch (_) {}
+      document.body.removeChild(ta);
+    }
+
+    btn.textContent = 'Copied \u2713';
+    setTimeout(() => { btn.innerHTML = COPY_ICON_HTML; }, 2000);
   });
 </script>
 </body>
